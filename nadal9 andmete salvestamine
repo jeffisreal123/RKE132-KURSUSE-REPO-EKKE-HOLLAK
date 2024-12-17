@@ -1,0 +1,18 @@
+string folderPath = @"C:\data";
+string fileName = "shoppingList.txt";
+string filePath = Path.Combine(folderPath, fileName);
+List<string> myShoppingList = new List<string>();
+
+if (File.Exists(filePath))
+{
+    myShoppingList = GetItemsFromUser();
+    File.WriteAllLines(filePath, myShoppingList);
+}
+else
+{
+    File.Create(filePath).Close();
+    Console.WriteLine($"File {fileName} has been created.");
+    myShoppingList = GetItemsFromUser();
+    File.WriteAllLines(filePath, myShoppingList);
+}
+
