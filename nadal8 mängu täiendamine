@@ -13,18 +13,20 @@ string[] weapon = { "magic wand", "plastic fork", "banana", "wooden sword", "Leg
 string hero = GetRandomValueFromArray(heroes);
 string heroWeapon = GetRandomValueFromArray(weapon);
 int heroHP = GetCharacterHp(hero);
+int heroStrikeStrength = heroHP;
 Console.WriteLine($"Today {hero} ({heroHP} HP) with {heroWeapon} saves the day!");
 
 
 string villain = GetRandomValueFromArray(villains);
 string villainWeapon = GetRandomValueFromArray(weapon);
 int villainHP = GetCharacterHp(villain);
+int villainStrikeStrength = villainHP;
 Console.WriteLine($"Today {villain} with ({villainHP} HP) {villainWeapon} tries to take over the world!");
 
 while(heroHP > 0 && villainHP > 0)
 {
-    heroHP = heroHP - Hit(villain, villainHP)
-    villainHP = villainHP - Hit(hero, heroHP)
+    heroHP = heroHP - Hit(villain, villainStrikeStrength);
+    villainHP = villainHP - Hit(hero, heroStrikeStrength);
 }
 
 Console.Writeline($"Hero {hero} HP {heroHP}");
